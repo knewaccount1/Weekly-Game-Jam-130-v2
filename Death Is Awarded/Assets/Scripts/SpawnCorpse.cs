@@ -28,6 +28,8 @@ public class SpawnCorpse : MonoBehaviour
         {
            
             gameObject.GetComponent<PlayerPlatformerController>().enabled = false; //disables current player movement
+            
+            GetComponent<GrabFunction>().grabbed = false;
             StartCoroutine(SpawnNewPlayer()); //Coroutine for delayed respawn
 
         }
@@ -42,8 +44,11 @@ public class SpawnCorpse : MonoBehaviour
     {
         yield return new WaitForSeconds(respawnTime);
         GameObject newPlayer = Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
+        gameObject.tag = "Grabbable";
         playerList.Add(newPlayer);
         Debug.Log(playerList.Count);
         newPlayer.GetComponent<PlayerPlatformerController>().enabled = true; //enable player movement (does not turn on when the previous player was disabled)
+        gameObject.GetComponent<GrabFunction>().enabled = false;
+        gameObject.GetComponent<SpawnCorpse>().enabled = false;
     }
 }

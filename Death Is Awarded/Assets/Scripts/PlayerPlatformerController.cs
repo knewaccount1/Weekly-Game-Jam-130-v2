@@ -36,6 +36,25 @@ public class PlayerPlatformerController : PhysicsObject
             }
         }
 
+        //manual flip sprite
+
+        if (move.x < 0)
+        {
+            Vector3 theScale = transform.localScale;
+            theScale.x = -1f;
+            transform.localScale = theScale;
+
+        }
+        if (move.x > 0)
+        {
+
+            Vector3 theScale = transform.localScale;
+            theScale.x = 1f;
+            transform.localScale = theScale;
+
+        }
+
+
         bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < 0.01f));
         if (flipSprite)
         {
