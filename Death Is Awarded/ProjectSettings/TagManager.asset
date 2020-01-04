@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Deathwall
   - SpawnPoint
+  - RespawnWall
   layers:
   - Default
   - TransparentFX
