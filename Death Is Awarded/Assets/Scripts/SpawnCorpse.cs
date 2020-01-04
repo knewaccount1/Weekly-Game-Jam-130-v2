@@ -30,6 +30,8 @@ public class SpawnCorpse : MonoBehaviour
             if (collision.tag == "Deathwall")
             {
 
+                FindObjectOfType<AudioManager>().PlayAudio("Player Death");
+
                 gameObject.GetComponent<PlayerPlatformerController>().enabled = false; //disables current player movement
 
                 GetComponent<GrabFunction>().grabbed = false;
