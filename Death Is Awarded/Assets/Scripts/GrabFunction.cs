@@ -10,24 +10,39 @@ public class GrabFunction : MonoBehaviour
     public Transform holdPoint;
     public float throwForce;
     public LayerMask notGrabbed;
+    private float vertical;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        vertical = Input.GetAxis("Vertical");
     }
 
     // Update is called once per frame
     void Update()
     {
+        vertical = Input.GetAxis("Vertical");
+        Vector2 rayCastDirection = Vector2.right;
+
+
+
         if (Input.GetButtonDown("Fire1"))
         {
             if (!grabbed)
             {
                 Physics2D.queriesStartInColliders = false;
 
-                hit = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, distance);
+                if (vertical < 0)
+                {
+                    hit = Physics2D.Raycast(transform.position, Vector2.down * transform.localScale.y, distance);
+                }
+                else
+                {
+                    hit = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, distance);
+                }
+                
+                
 
                 if(hit.collider != null && hit.collider.tag == "Grabbable")
                 {

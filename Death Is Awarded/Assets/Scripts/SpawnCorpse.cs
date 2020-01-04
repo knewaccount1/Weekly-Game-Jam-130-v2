@@ -8,6 +8,7 @@ public class SpawnCorpse : MonoBehaviour
     public Transform spawnPoint;    //spawn point in the scene
     public float respawnTime = 1f;
     public List<GameObject> playerList; //public for debugging. List for clearing dead bodies;
+    private bool isEnabled = true; //used to turn off functionality of this script.
 
     private void Update()
     {
@@ -23,21 +24,24 @@ public class SpawnCorpse : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision) //collision with death walls
     {
-       
-        if (collision.tag == "Deathwall")
+        if (isEnabled)
         {
-           
-            gameObject.GetComponent<PlayerPlatformerController>().enabled = false; //disables current player movement
-            
-            GetComponent<GrabFunction>().grabbed = false;
-            StartCoroutine(SpawnNewPlayer()); //Coroutine for delayed respawn
 
-        }
+            if (collision.tag == "Deathwall")
+            {
 
-        if (collision.tag == "RespawnWall")
-        {
-           
-            gameObject.transform.position = spawnPoint.position;
+                gameObject.GetComponent<PlayerPlatformerController>().enabled = false; //disables current player movement
+
+                GetComponent<GrabFunction>().grabbed = false;
+                StartCoroutine(SpawnNewPlayer()); //Coroutine for delayed respawn
+
+            }
+
+            if (collision.tag == "RespawnWall")
+            {
+
+                gameObject.transform.position = spawnPoint.position;
+            }
         }
     }
     IEnumerator SpawnNewPlayer()
@@ -49,6 +53,6 @@ public class SpawnCorpse : MonoBehaviour
         Debug.Log(playerList.Count);
         newPlayer.GetComponent<PlayerPlatformerController>().enabled = true; //enable player movement (does not turn on when the previous player was disabled)
         gameObject.GetComponent<GrabFunction>().enabled = false;
-        gameObject.GetComponent<SpawnCorpse>().enabled = false;
+        gameObject.GetComponent<SpawnCorpse>().isEnabled = false;
     }
 }
