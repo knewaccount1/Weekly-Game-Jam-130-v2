@@ -7,15 +7,24 @@ public class PlayerPlatformerController : PhysicsObject
 
     public float maxSpeed = 7;
     public float jumpTakeOffSpeed = 7;
+    private AudioManager audioManager;
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+    private bool shortJump;
+    private float airTime;
+    public float playLongJump;
 
     // Use this for initialization
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     protected override void ComputeVelocity()
@@ -27,6 +36,7 @@ public class PlayerPlatformerController : PhysicsObject
         if (Input.GetButtonDown("Jump") && grounded)
         {
             velocity.y = jumpTakeOffSpeed;
+            audioManager.PlayAudio("Jump Short");
         }
         else if (Input.GetButtonUp("Jump"))
         {
