@@ -70,6 +70,7 @@ GameObject:
   - component: {fileID: 6862236445714208122}
   - component: {fileID: 5180190836783753321}
   - component: {fileID: 1379133625545410818}
+  - component: {fileID: -5769484739610458511}
   m_Layer: 11
   m_Name: Hopper
   m_TagString: Enemy
@@ -104,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ea9d17e33720f64585949de99bd99a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
+  moveSpeed: 7
   patrolUnit: 1
   hopper: 1
   hopForce: 25
@@ -205,3 +206,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-5769484739610458511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5360886330938833365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c56eed6c310ff408decc70c0fd9066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayer: 0
+  timeToRespawn: 0

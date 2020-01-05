@@ -14,7 +14,7 @@ public class Destructable : MonoBehaviour
     public void DestroyIt()
     {
         Destroy(gameObject);
-        //audioManager.PlayAudio("Jump Short"); PLAY DESTRUCTABLE AUDIO HERE;
+        audioManager.PlayAudio("Break Block");
 
     }
 }

@@ -133,9 +133,10 @@ GameObject:
   - component: {fileID: 53492411}
   - component: {fileID: 53492410}
   - component: {fileID: 53492412}
+  - component: {fileID: 53492413}
   m_Layer: 11
   m_Name: Death
-  m_TagString: Untagged
+  m_TagString: Deathwall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -212,8 +213,8 @@ BoxCollider2D:
   m_GameObject: {fileID: 53492407}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_Material: {fileID: 6200000, guid: c75372e6be27a94439415ae02f939c20, type: 2}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -268,6 +269,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &53492413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53492407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c56eed6c310ff408decc70c0fd9066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayer: 0
+  timeToRespawn: 0
 --- !u!1 &72613643
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,7 +319,7 @@ Transform:
   - {fileID: 1974309520}
   - {fileID: 1008539911}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &116380171
 GameObject:
@@ -339,7 +354,7 @@ Transform:
   - {fileID: 1423468425}
   - {fileID: 667266867}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &247713401
 GameObject:
@@ -548,7 +563,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -1173,7 +1188,7 @@ Transform:
   m_LocalScale: {x: 4, y: 50, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &832110631
 GameObject:
@@ -1198,12 +1213,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832110631}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -32.7, y: -26.4, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -12.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 1102766502}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1008539909
 GameObject:
@@ -1315,6 +1330,7 @@ Transform:
   m_Children:
   - {fileID: 1851949340}
   - {fileID: 53492408}
+  - {fileID: 832110632}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1330,7 +1346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01063f7ab4ef54446912403aa400c814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 6
+  scrollSpeed: 8
 --- !u!1 &1241953551
 GameObject:
   m_ObjectHideFlags: 0
@@ -1516,7 +1532,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.64, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1423468424
 GameObject:
@@ -1950,7 +1966,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1660231525
 GameObject:
@@ -2008,6 +2024,30 @@ MonoBehaviour:
     loop: 0
   - name: Power Up
     clip: {fileID: 8300000, guid: 4f6f7221c81a9094a96971867598db32, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Break Block
+    clip: {fileID: 8300000, guid: 43e03856795b0634d8b240662589427b, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Coin
+    clip: {fileID: 8300000, guid: ffab66d4340e22647a9fa0aec3e54116, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Enemy Hurt
+    clip: {fileID: 8300000, guid: 04b5f91c54e6a2d45abfb09091d8f7b8, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Enemy Stomp
+    clip: {fileID: 8300000, guid: b2905b8c56379794891b1c0558d54040, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
@@ -2324,6 +2364,42 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382312358580080189, guid: 85affc73e65dc8148b8a85bc9952a371,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0071291924
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382312358580080189, guid: 85affc73e65dc8148b8a85bc9952a371,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 2.3239293
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382312358580080189, guid: 85affc73e65dc8148b8a85bc9952a371,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.07800102
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382312358580080189, guid: 85affc73e65dc8148b8a85bc9952a371,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2.1391602
+      objectReference: {fileID: 0}
+    - target: {fileID: 169659031, guid: 85affc73e65dc8148b8a85bc9952a371, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.050006032
+      objectReference: {fileID: 0}
+    - target: {fileID: 169659031, guid: 85affc73e65dc8148b8a85bc9952a371, type: 3}
+      propertyPath: m_Size.x
+      value: 2.5586197
+      objectReference: {fileID: 0}
+    - target: {fileID: 169659031, guid: 85affc73e65dc8148b8a85bc9952a371, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.068045616
+      objectReference: {fileID: 0}
+    - target: {fileID: 169659031, guid: 85affc73e65dc8148b8a85bc9952a371, type: 3}
+      propertyPath: m_Size.y
+      value: 0.86390877
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85affc73e65dc8148b8a85bc9952a371, type: 3}

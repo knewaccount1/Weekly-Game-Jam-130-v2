@@ -7,6 +7,7 @@ public class Enemies : MonoBehaviour
     public float moveSpeed;
     public bool patrolUnit;
     public bool hopper;
+    public bool flier;
     public float hopForce;
     public float timeBetweenHop;
     private float timeSinceHop;
@@ -20,7 +21,14 @@ public class Enemies : MonoBehaviour
     }
     void Update()
     {
-        transform.position += Vector3.left * Time.deltaTime * moveSpeed;
+        if (flier)
+        {
+            transform.position += Vector3.left * Time.deltaTime * moveSpeed;
+        }
+        else
+        {
+            transform.position += Vector3.right * Time.deltaTime * moveSpeed;
+        }
 
         HopperFunction();
 

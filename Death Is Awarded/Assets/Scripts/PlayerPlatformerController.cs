@@ -31,6 +31,7 @@ public class PlayerPlatformerController : MonoBehaviour
     //ground raycast
     public float groundCastDistance;
     bool grounded;
+    int layerMask;
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -41,6 +42,7 @@ public class PlayerPlatformerController : MonoBehaviour
     private void Start()
     {
         audioManager = FindObjectOfType<AudioManager>();
+        layerMask = ~(LayerMask.GetMask("Player"));
     }
 
     private void Update()
@@ -48,7 +50,7 @@ public class PlayerPlatformerController : MonoBehaviour
 
         Physics2D.queriesStartInColliders = false;
       
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down * transform.localScale.y, groundCastDistance);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down * transform.localScale.y, groundCastDistance, layerMask);
         Debug.Log("grounded bool: " + grounded + "hit: " + hit);
         if (hit.collider != null)
         {
@@ -58,6 +60,7 @@ public class PlayerPlatformerController : MonoBehaviour
         {
             grounded = false;
         }
+
 
         Vector2 move = Vector2.zero;
 
@@ -135,6 +138,8 @@ public class PlayerPlatformerController : MonoBehaviour
 
         Gizmos.DrawLine(transform.position, transform.position + Vector3.down * transform.localScale.y * groundCastDistance);
     }
+
+    
 }
 
 
