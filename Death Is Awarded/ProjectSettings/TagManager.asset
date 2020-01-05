@@ -9,6 +9,10 @@ TagManager:
   - RespawnWall
   - Grabbable
   - CheckPoint
+  - Enemy
+  - LevelSpawnCollider
+  - Destructable
+  - Collectable
   layers:
   - Default
   - TransparentFX
@@ -21,9 +25,9 @@ TagManager:
   - Deathwall
   - Player
   - Camera Bounds
-  - 
-  - 
-  - 
+  - Enemy
+  - EnemyCollider
+  - Ground
   - 
   - 
   - 
@@ -43,6 +47,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 4268418639
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 1419297181
+    locked: 0
+  - name: Enemy
+    uniqueID: 2382385223
+    locked: 0
+  - name: Ground
+    uniqueID: 487909959
     locked: 0
