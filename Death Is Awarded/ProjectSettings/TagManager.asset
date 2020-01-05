@@ -13,6 +13,7 @@ TagManager:
   - LevelSpawnCollider
   - Destructable
   - Collectable
+  - StageClear
   layers:
   - Default
   - TransparentFX
