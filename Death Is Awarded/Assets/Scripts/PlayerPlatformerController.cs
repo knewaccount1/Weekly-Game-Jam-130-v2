@@ -7,6 +7,7 @@ public class PlayerPlatformerController : PhysicsObject
 
     public float maxSpeed = 7;
     public float jumpTakeOffSpeed = 7;
+    public float jumpFallFactor = 0.5f;
     private AudioManager audioManager;
 
     private SpriteRenderer spriteRenderer;
@@ -15,6 +16,15 @@ public class PlayerPlatformerController : PhysicsObject
     private float airTime;
     public float playLongJump;
 
+
+    //Improved Jump (JumpBuffering)
+    float fJumpPressedRemember = 0;
+    [SerializeField] float fJumpPressedRememberTime = 0.2f;
+
+    //(Coyote time)
+    float fGroundedRemember = 0;
+    [SerializeField]
+    float fGroundedRememberTime = 0.25f;
     // Use this for initialization
     void Awake()
     {
@@ -33,8 +43,23 @@ public class PlayerPlatformerController : PhysicsObject
 
         move.x = Input.GetAxis("Horizontal");
 
-        if (Input.GetButtonDown("Jump") && grounded)
+        fGroundedRemember -= Time.deltaTime;
+        if (grounded)
         {
+            fGroundedRemember = fGroundedRememberTime;
+        }
+
+        fJumpPressedRemember -= Time.deltaTime;
+        
+        if (Input.GetButtonDown("Jump"))    //JUMP BUFFERING
+        {
+            fJumpPressedRemember = fJumpPressedRememberTime;
+
+        }
+
+        if((fJumpPressedRemember>0) && grounded) //JUMP BUFFERING
+        {
+            fJumpPressedRemember = 0;
             velocity.y = jumpTakeOffSpeed;
             audioManager.PlayAudio("Jump Short");
         }
@@ -42,9 +67,17 @@ public class PlayerPlatformerController : PhysicsObject
         {
             if (velocity.y > 0)
             {
-                velocity.y = velocity.y * 0.5f;
+                velocity.y = velocity.y * jumpFallFactor;
             }
         }
+
+        if ((fJumpPressedRemember > 0) && (fGroundedRemember > 0)) //COYOTE TIME
+        {
+            fJumpPressedRemember = 0;
+            fGroundedRemember = 0;
+            velocity.y = jumpTakeOffSpeed;
+        }
+
 
         //manual flip sprite
 

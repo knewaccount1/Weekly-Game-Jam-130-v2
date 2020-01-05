@@ -8,6 +8,7 @@ TagManager:
   - SpawnPoint
   - RespawnWall
   - Grabbable
+  - CheckPoint
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - 
   - Deathwall
   - Player
-  - 
+  - Camera Bounds
   - 
   - 
   - 

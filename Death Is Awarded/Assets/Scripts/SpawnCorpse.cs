@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class SpawnCorpse : MonoBehaviour
 {
@@ -54,6 +55,8 @@ public class SpawnCorpse : MonoBehaviour
         playerList.Add(newPlayer);
         Debug.Log(playerList.Count);
         newPlayer.GetComponent<PlayerPlatformerController>().enabled = true; //enable player movement (does not turn on when the previous player was disabled)
+        FindObjectOfType<CinemachineVirtualCamera>().Follow = newPlayer.transform;
+        gameObject.GetComponent<Renderer>().material.color = Color.grey; 
         gameObject.GetComponent<GrabFunction>().enabled = false;
         gameObject.GetComponent<SpawnCorpse>().isEnabled = false;
     }
