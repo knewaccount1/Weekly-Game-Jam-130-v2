@@ -10,6 +10,7 @@ public class KillPlayer : MonoBehaviour
     PlayerPlatformerController playerController;
     SpriteRenderer sr;
     [SerializeField] float timeToRespawn;
+    BoxCollider2D playerCollider;
 
     private void Start()
     {
@@ -19,6 +20,7 @@ public class KillPlayer : MonoBehaviour
             playerController = GetComponent<PlayerPlatformerController>();
             sr = GetComponent<SpriteRenderer>();
             spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint").transform;
+            playerCollider = GetComponent<BoxCollider2D>();
         }
     }
   
@@ -26,6 +28,7 @@ public class KillPlayer : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            Debug.Log(collision);
             collision.GetComponent<KillPlayer>().KillMyself();
         }
     }
@@ -35,13 +38,16 @@ public class KillPlayer : MonoBehaviour
         transform.position = spawnPoint.position;
         playerController.enabled = true;
         sr.enabled = true;
+        playerCollider.enabled = true;
 
     }
 
     public void KillMyself()
     {
+        
         playerController.enabled = false;
         sr.enabled = false;
+        playerCollider.enabled = false;
         FindObjectOfType<AudioManager>().PlayAudio("Player Death");
         StartCoroutine(RespawnPlayer());
     }

@@ -7,7 +7,7 @@ public class CameraScroll : MonoBehaviour
     public float scrollSpeed;
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Vector2 cameraPos = transform.position;
         cameraPos.x += scrollSpeed * Time.deltaTime;

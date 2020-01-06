@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JumpOnEnemy : MonoBehaviour
+public class JumpOnEnemy1 : MonoBehaviour
 {
-    public float jumpOffEnemy = 10;
+    public float jumpOffEnemyForce = 10;
     private void OnTriggerEnter2D(Collider2D collision)
     {
             if (collision.tag == "Enemy")
             {
-                Debug.Log(collision);
+            Debug.Log(collision);
                 Destroy(collision.gameObject);
                 FindObjectOfType<AudioManager>().PlayAudio("Enemy Stomp");
-                GetComponentInParent<Rigidbody2D>().velocity = Vector2.up * jumpOffEnemy;
+                GetComponentInParent<Rigidbody2D>().velocity = Vector2.up * jumpOffEnemyForce;
             }
        
     }
