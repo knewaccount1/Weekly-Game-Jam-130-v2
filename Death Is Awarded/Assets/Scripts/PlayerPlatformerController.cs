@@ -51,7 +51,7 @@ public class PlayerPlatformerController : MonoBehaviour
         Physics2D.queriesStartInColliders = false;
       
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down * transform.localScale.y, groundCastDistance, layerMask);
-        Debug.Log("grounded bool: " + grounded + "hit: " + hit);
+        
         if (hit.collider != null)
         {
             grounded = true;
@@ -69,7 +69,9 @@ public class PlayerPlatformerController : MonoBehaviour
         fGroundedRemember -= Time.deltaTime;
         if (grounded)
         {
+            animator.SetBool("isJumping", false);
             fGroundedRemember = fGroundedRememberTime;
+           
         }
 
         fJumpPressedRemember -= Time.deltaTime;
@@ -77,6 +79,7 @@ public class PlayerPlatformerController : MonoBehaviour
         if (Input.GetButtonDown("Jump"))    //JUMP BUFFERING
         {
             fJumpPressedRemember = fJumpPressedRememberTime;
+            animator.SetTrigger("takeOff");
         }
 
         if ((fJumpPressedRemember > 0) && grounded) //JUMP BUFFERING
@@ -84,14 +87,18 @@ public class PlayerPlatformerController : MonoBehaviour
             fJumpPressedRemember = 0;
             rb.velocity = Vector2.up * jumpTakeOffSpeed;
             audioManager.PlayAudio("Jump Short");
+            
+            animator.SetBool("isJumping", true);
         }
         else if (Input.GetButtonUp("Jump"))
         {
             if (rb.velocity.y > 0)
             {
                 rb.velocity = rb.velocity * new Vector2 (1,jumpFallFactor);
+
             }
         }
+
 
         if ((fJumpPressedRemember > 0) && (fGroundedRemember > 0)) //COYOTE TIME
         {
@@ -103,28 +110,36 @@ public class PlayerPlatformerController : MonoBehaviour
 
         //manual flip sprite
 
+       
+
         if (move.x < 0)
         {
             Vector3 theScale = transform.localScale;
             theScale.x = -1f;
             transform.localScale = theScale;
+            animator.SetBool("isRunning", true);
 
         }
-        if (move.x > 0)
+        else if (move.x > 0)
         {
 
             Vector3 theScale = transform.localScale;
             theScale.x = 1f;
             transform.localScale = theScale;
-
+            animator.SetBool("isRunning", true);
         }
-
-
-        bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < 0.01f));
-        if (flipSprite)
+        else
         {
-            spriteRenderer.flipX = !spriteRenderer.flipX;
+            animator.SetBool("isRunning", false);
         }
+
+
+
+        //bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < 0.01f));
+        //if (flipSprite)
+        //{
+        //    spriteRenderer.flipX = !spriteRenderer.flipX;
+        //}
 
         //animator.SetBool("grounded", grounded);
         //animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);

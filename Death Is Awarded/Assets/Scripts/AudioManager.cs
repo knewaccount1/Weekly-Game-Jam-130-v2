@@ -1,11 +1,15 @@
 ﻿using UnityEngine.Audio;
 using System;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class AudioManager : MonoBehaviour
 {
 
     public Sound[] sounds;
+    public bool titleScreen;
+    public bool level1;
 
     public static AudioManager instance;
 
@@ -35,9 +39,15 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        PlayAudio("Background Music");
+        StartCoroutine(PlayTheme());
     }
 
+    IEnumerator PlayTheme()
+    {
+        PlayAudio("Title Theme Intro");
+        yield return new WaitForSeconds(sounds[9].source.clip.length);
+        PlayAudio("Title Theme");
+    }
     public void PlayAudio(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
@@ -47,5 +57,11 @@ public class AudioManager : MonoBehaviour
             return;
         }
         s.source.Play();
+    }
+
+    public void StopAudio(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        s.source.Stop();
     }
 }

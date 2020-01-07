@@ -10,7 +10,9 @@ public class KillPlayer : MonoBehaviour
     PlayerPlatformerController playerController;
     SpriteRenderer sr;
     [SerializeField] float timeToRespawn;
+    [SerializeField] float invulnTime;
     BoxCollider2D playerCollider;
+    public bool invuln;
 
     private void Start()
     {
@@ -34,21 +36,33 @@ public class KillPlayer : MonoBehaviour
     }
     IEnumerator RespawnPlayer()
     {
+        
         yield return new WaitForSeconds(timeToRespawn);
         transform.position = spawnPoint.position;
         playerController.enabled = true;
         sr.enabled = true;
         playerCollider.enabled = true;
+        invuln = true;
+        Invoke("ResetInvuln", invulnTime);
 
     }
 
     public void KillMyself()
     {
-        
-        playerController.enabled = false;
-        sr.enabled = false;
-        playerCollider.enabled = false;
-        FindObjectOfType<AudioManager>().PlayAudio("Player Death");
-        StartCoroutine(RespawnPlayer());
+
+        if (!invuln)
+        {
+            playerController.enabled = false;
+            sr.enabled = false;
+            playerCollider.enabled = false;
+            FindObjectOfType<AudioManager>().PlayAudio("Player Death");
+            StartCoroutine(RespawnPlayer());
+        }
     }
+
+    void ResetInvuln()
+    {
+        invuln = false;
+    }
+
 }

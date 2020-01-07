@@ -1,0 +1,126 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &329365596482122030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 329365596482122032}
+  - component: {fileID: 329365596482122033}
+  m_Layer: 0
+  m_Name: AudioManager 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &329365596482122032
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329365596482122030}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &329365596482122033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329365596482122030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cf96f640ba7aa94b927e3bb98d68be7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Player Death
+    clip: {fileID: 8300000, guid: 9c1364330663f3c479982274a8e390cf, type: 3}
+    volume: 0.549
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Background Music
+    clip: {fileID: 0}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: Jump Long
+    clip: {fileID: 8300000, guid: 8a9b5b3e13a814944a1bfc033af3a6a3, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Jump Short
+    clip: {fileID: 8300000, guid: 5b5eeafb51e51b2489f892767896f00d, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Power Up
+    clip: {fileID: 8300000, guid: 4f6f7221c81a9094a96971867598db32, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Break Block
+    clip: {fileID: 8300000, guid: 43e03856795b0634d8b240662589427b, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Coin
+    clip: {fileID: 8300000, guid: ffab66d4340e22647a9fa0aec3e54116, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Enemy Hurt
+    clip: {fileID: 8300000, guid: 04b5f91c54e6a2d45abfb09091d8f7b8, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Enemy Stomp
+    clip: {fileID: 8300000, guid: b2905b8c56379794891b1c0558d54040, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Title Theme Intro
+    clip: {fileID: 8300000, guid: bec73887f4953eb4b93c65b855f5ab05, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Title Theme
+    clip: {fileID: 8300000, guid: c6f1a65a9b073d74ab4c313f99208cd6, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: Level 1 Theme Intro
+    clip: {fileID: 8300000, guid: 1a5943b6c7fe3c44da8915719f37634a, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Level 1 Theme
+    clip: {fileID: 8300000, guid: 80eced9685b314046879780e558ba52f, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  titleScreen: 1
+  level1: 0
