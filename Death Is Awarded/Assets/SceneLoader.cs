@@ -35,8 +35,8 @@ public class SceneLoader : MonoBehaviour
 
         SceneManager.LoadScene(sceneIndex);
         audioManager.StopAllCoroutines();
-       
-      
+        audioManager.PlayAudio("Level 1 Theme");
+
         //StartCoroutine(PlaySong());
 
     }
