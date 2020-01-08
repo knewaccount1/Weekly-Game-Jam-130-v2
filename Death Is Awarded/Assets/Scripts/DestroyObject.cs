@@ -6,7 +6,12 @@ public class DestroyObject : MonoBehaviour
 {
     RaycastHit2D hit;
     public float distance = 10f;
+    Animator animator;
 
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -14,11 +19,12 @@ public class DestroyObject : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-
+            animator.SetTrigger("punch");
             hit = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, distance);
             if (hit.collider != null && hit.collider.tag == "Destructable")
             {
                 hit.collider.gameObject.GetComponent<Destructable>().DestroyIt();
+                
             }
         }
     }
