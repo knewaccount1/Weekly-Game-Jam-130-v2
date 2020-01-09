@@ -13,4 +13,9 @@ public class CameraScroll : MonoBehaviour
         cameraPos.x += scrollSpeed * Time.deltaTime;
         transform.position = cameraPos;
     }
+
+    public void SpeedUp(float num)
+    {
+        scrollSpeed += num;
+    }
 }

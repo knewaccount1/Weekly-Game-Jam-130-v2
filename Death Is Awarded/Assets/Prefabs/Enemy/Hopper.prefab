@@ -44,7 +44,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.032218933, y: 0.03217125}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -55,7 +55,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 5.9306183, y: 9.913158}
   m_EdgeRadius: 0
 --- !u!1 &5360886330938833365
 GameObject:
@@ -71,6 +71,7 @@ GameObject:
   - component: {fileID: 5180190836783753321}
   - component: {fileID: 1379133625545410818}
   - component: {fileID: -5769484739610458511}
+  - component: {fileID: 2430619440772492250}
   m_Layer: 11
   m_Name: Hopper
   m_TagString: Enemy
@@ -108,6 +109,7 @@ MonoBehaviour:
   moveSpeed: 7
   patrolUnit: 1
   hopper: 1
+  flier: 0
   hopForce: 25
   timeBetweenHop: 5
 --- !u!61 &6862236445714208122
@@ -123,18 +125,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.12885284, y: 2.2195427}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3, y: 3}
+    oldSize: {x: 7.714286, y: 9.928572}
     newSize: {x: 3, y: 3}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.2, y: 2.2}
+  m_Size: {x: 7.741562, y: 6.6390853}
   m_EdgeRadius: 0
 --- !u!212 &5180190836783753321
 SpriteRenderer:
@@ -174,9 +176,10 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e58d4313096efac45829af8f6f526f57, type: 3}
-  m_Color: {r: 0.29019615, g: 0.98039216, b: 0.6139019, a: 1}
-  m_FlipX: 0
+  m_Sprite: {fileID: -7879369708495070109, guid: 0e2f7b83f2d82984abe98465a862881c,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 3, y: 3}
@@ -220,3 +223,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   timeToRespawn: 0
+  invulnTime: 0
+  invuln: 0
+  respawnText: {fileID: 0}
+--- !u!95 &2430619440772492250
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5360886330938833365}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d8a8ab004dd9182458f8d239499d3a61, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

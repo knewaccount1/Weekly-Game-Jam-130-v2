@@ -12,12 +12,18 @@ public class Enemies : MonoBehaviour
     public float timeBetweenHop;
     private float timeSinceHop;
     private Rigidbody2D rb;
-    
+    private AudioManager audioManager;
+    ScoreManager scoreManager;
+
+
 
 
     private void Start()
     {
+        scoreManager = FindObjectOfType<ScoreManager>();
         rb = GetComponent<Rigidbody2D>();
+        audioManager = FindObjectOfType<AudioManager>();
+       
     }
     void Update()
     {
@@ -50,6 +56,18 @@ public class Enemies : MonoBehaviour
         if (patrolUnit && collision.gameObject.tag != "Ground")
         {
             moveSpeed = moveSpeed * -1;
+            Vector3 oldTrans = transform.localScale;
+            oldTrans.x *= -1;
+            transform.localScale = oldTrans;
+            
         }
+    }
+
+    public void DestroyIt()
+    {
+        scoreManager.AddScore(10);
+        Destroy(gameObject);
+        audioManager.PlayAudio("Break Block");
+
     }
 }

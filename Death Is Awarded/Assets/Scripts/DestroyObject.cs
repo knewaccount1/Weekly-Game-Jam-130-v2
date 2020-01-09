@@ -26,6 +26,11 @@ public class DestroyObject : MonoBehaviour
                 hit.collider.gameObject.GetComponent<Destructable>().DestroyIt();
                 
             }
+
+            if (hit.collider.tag == "Enemy" && hit.collider != null)
+            {
+                hit.collider.gameObject.GetComponent<Enemies>().DestroyIt();
+            }
         }
     }
 

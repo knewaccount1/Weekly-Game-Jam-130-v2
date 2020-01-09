@@ -12,6 +12,14 @@ public class LevelSpawner : MonoBehaviour
     public string[] gameText;
     public Transform levelContainer;
     public TextMeshProUGUI deathText;
+    private CameraScroll cameraSpeed;
+    public float speedAdded;
+    
+
+    private void Start()
+    {
+        cameraSpeed = GetComponentInParent<CameraScroll>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "LevelSpawnCollider")
@@ -21,6 +29,7 @@ public class LevelSpawner : MonoBehaviour
             Instantiate(waves[waveIndex], levelContainer);
             waveIndex++;
 
+            cameraSpeed.SpeedUp(speedAdded);
             StartCoroutine(ShowText());
        
         }

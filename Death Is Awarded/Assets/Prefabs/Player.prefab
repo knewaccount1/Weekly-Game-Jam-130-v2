@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpOffEnemyForce: 10
+  scoreText: {fileID: 0}
+  score: 0
 --- !u!58 &1425969538
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -331,7 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d74e4acd5b00ce4ab905371745be334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 5
+  distance: 6
 --- !u!114 &366714673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,6 +350,7 @@ MonoBehaviour:
   timeToRespawn: 1.5
   invulnTime: 1.5
   invuln: 0
+  respawnText: {fileID: 0}
 --- !u!95 &643324655
 Animator:
   serializedVersion: 3

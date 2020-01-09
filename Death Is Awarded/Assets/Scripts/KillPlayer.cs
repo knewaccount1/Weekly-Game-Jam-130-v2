@@ -16,6 +16,7 @@ public class KillPlayer : MonoBehaviour
     public bool invuln;
     Transform playerTransform;
     public TextMeshProUGUI respawnText;
+    Collider2D playerFeet;
 
 
     private void Start()
@@ -28,6 +29,7 @@ public class KillPlayer : MonoBehaviour
             spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint").transform;
             playerCollider = GetComponent<BoxCollider2D>();
             playerTransform = GetComponent<Transform>();
+            playerFeet = FindObjectOfType<JumpOnEnemy1>().GetComponent<CircleCollider2D>();
         }
     }
   
@@ -47,6 +49,7 @@ public class KillPlayer : MonoBehaviour
         playerController.enabled = true;
         sr.enabled = true;
         playerCollider.enabled = true;
+        playerFeet.enabled = true;
         invuln = true;
         respawnText.gameObject.SetActive(false);
         FindObjectOfType<AudioManager>().PlayAudio("Power Up");
@@ -66,6 +69,7 @@ public class KillPlayer : MonoBehaviour
             respawnText.gameObject.SetActive(true);
             respawnText.text = "YES BILL, YOU'RE GETTING STRONG ACCEPT ME";
             playerCollider.enabled = false;
+            playerFeet.enabled = false ;
             FindObjectOfType<AudioManager>().PlayAudio("Player Death");
             StartCoroutine(RespawnPlayer());
         }
